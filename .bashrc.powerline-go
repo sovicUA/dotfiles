@@ -1,0 +1,9 @@
+### Powerline-Go shell Prompt PS1
+function _update_ps1() {
+    PS1="$(/usr/bin/powerline-go -hostname-only-if-ssh -modules 'time,venv,user,host,ssh,cwd,perms,git,hg,jobs' -error $?)"
+}
+
+if [ "$TERM" != "linux" ] && [ -f "/usr/bin/powerline-go" ]; then
+    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+fi
+
